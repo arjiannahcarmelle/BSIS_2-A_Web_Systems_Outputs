@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ramen Zen</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff8f0;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background-color: #ff4d4d;
+      color: white;
+      padding: 20px;
+    }
+
+    nav a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 40px 20px;
+    }
+
+    img {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+      margin: 10px auto;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 5px;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+    }
+
+    footer a {
+      color: #ffcc00;
+      margin: 0 5px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🍜 Ramen Zen</h1>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#subscribe">Subscribe</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <h2>Welcome to Ramen Zen</h2>
+    <p>Delicious, authentic Japanese ramen made fresh every day.</p>
+  </section>
+
+  <section id="menu">
+    <h2>Our Ramen</h2>
+
+    <div>
+      <img src="https://via.placeholder.com/200" alt="Tonkotsu Ramen">
+      <p>Tonkotsu Ramen - $12.99</p>
+    </div>
+
+    <div>
+      <img src="https://via.placeholder.com/200" alt="Shoyu Ramen">
+      <p>Shoyu Ramen - $11.49</p>
+    </div>
+
+    <div>
+      <img src="https://via.placeholder.com/200" alt="Spicy Miso Ramen">
+      <p>Spicy Miso Ramen - $13.99</p>
+    </div>
+  </section>
+
+  <section id="subscribe">
+    <h2>Subscribe to Our Newsletter</h2>
+    <form onsubmit="alert('Thanks for subscribing!'); return false;">
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <footer id="contact">
+    <p>&copy; 2025 Ramen Zen</p>
+    <p>
+      <a href="#">Facebook</a> |
+      <a href="#">Instagram</a> |
+      <a href="#">Twitter</a>
+    </p>
+  </footer>
+
+</body>
+</html>
