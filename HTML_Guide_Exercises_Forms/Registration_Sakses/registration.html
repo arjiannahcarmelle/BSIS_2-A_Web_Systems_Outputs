@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Ichiraku Ramen - Progressive Sign Up</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+/* Body & Container */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  width: 380px;
+  max-width: 96%;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  padding: 30px 25px;
+  text-align: center;
+  position: relative;
+}
+
+/* Headings */
+h1 {
+  color: #e60023;
+  margin-bottom: 5px;
+  font-size: 26px;
+}
+p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+/* Progress Bar */
+.progress {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.progress .bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  margin: 0 3px;
+  background: #eee;
+  transition: 0.3s;
+}
+.progress .bar.active {
+  background: #e60023;
+}
+
+/* Step Indicator */
+#stepIndicator {
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Steps */
+.step {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+.step.active {
+  display: block;
+}
+@keyframes fadeIn {
+  from {opacity:0; transform: translateY(10px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+/* Inputs */
+label {
+  display:block;
+  text-align:left;
+  margin: 10px 0 6px;
+  font-weight:bold;
+  color:#333;
+}
+.input-group {
+  position: relative;
+}
+input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+input:focus {
+  border-color: #e60023;
+  outline: none;
+  box-shadow: 0 0 6px rgba(230,0,35,0.3);
+}
+
+/* Password Toggle */
+.password-toggle input {
+  padding-right: 45px;
+}
+.toggle-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background:none;
+  border:none;
+  cursor:pointer;
+  font-size: 16px;
+  color:#555;
+}
+
+/* Errors */
+.error {
+  color: #e60023;
+  font-size: 12px;
+  text-align: left;
+  margin-bottom: 10px;
+  display: none;
+}
+
+/* Buttons */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+.actions button {
+  flex: 1;
+  padding: 12px;
+  background: #e60023;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.actions button:hover {
+  background: #b2001a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(230,0,35,0.3);
+}
+.actions .secondary {
+  background: #fff;
+  color: #e60023;
+  border: 2px solid #e60023;
+}
+.actions .secondary:hover {
+  background: #e60023;
+  color: white;
+}
+
+/* Links */
+.link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+.link a {
+  color: #e60023;
+  font-weight: bold;
+  text-decoration: none;
+}
+.link a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<div class="container" role="form" aria-labelledby="signupTitle">
+<h1 id="signupTitle">Sign Up</h1>
+<p>Create your Ichiraku Ramen account 🍜</p>
+
+<div class="progress">
+  <div class="bar active"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</div>
+
+<div id="stepIndicator">Step 1 of 4</div>
+
+<form id="signupForm" novalidate>
+  <!-- Step 1 -->
+  <div class="step active">
+    <label for="fullname">Full Name</label>
+    <input type="text" id="fullname" placeholder="Enter your name" required>
+    <div class="error" id="error-fullname">Please enter your full name.</div>
+    <div class="actions">
+      <button type="button" data-action="next">Next</button>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step">
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Enter your email" required>
+    <div class="error" id="error-email">Please enter a valid email address.</div>
+    <div class="actions">
+      <button type="button" class="secondary" data-action="prev">Back</button>
+      <button type="button" data-action="next">Next</button>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step">
+    <label for="mobile">Mobile Number</label>
+    <input type="tel" id="mobile" placeholder="09XXXXXXXXX" required>
+    <div class="error" id="error-mobile">Enter a valid 11-digit number starting with 09.</div>
+    <div class="actions">
+      <button type="button" class="secondary" data-action="prev">Back</button>
+      <button type="button" data-action="next">Next</button>
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="step">
+    <label for="password">Password</label>
+    <div class="password-toggle">
+      <input type="password" id="password" placeholder="Enter password" required>
+      <button type="button" class="toggle-btn" onclick="togglePassword('password')">👁</button>
+    </div>
+    <div class="error" id="error-password">Password must be at least 8 characters, include letters & numbers.</div>
+
+    <label for="confirm">Confirm Password</label>
+    <div class="password-toggle">
+      <input type="password" id="confirm" placeholder="Confirm password" required>
+      <button type="button" class="toggle-btn" onclick="togglePassword('confirm')">👁</button>
+    </div>
+    <div class="error" id="error-confirm">Passwords do not match.</div>
+
+    <div class="actions">
+      <button type="button" class="secondary" data-action="prev">Back</button>
+      <button type="submit">Finish</button>
+    </div>
+  </div>
+</form>
+
+<div class="link">
+  Already have an account? <a href="login.html">Log In</a>
+</div>
+</div>
+
+<script>
+let currentStep = 0;
+const steps = document.querySelectorAll(".step");
+const bars = document.querySelectorAll(".progress .bar");
+const stepIndicator = document.getElementById("stepIndicator");
+
+function showStep(n) {
+  steps.forEach((step, i) => step.classList.toggle("active", i===n));
+  bars.forEach((bar,i)=>bar.classList.toggle("active", i<=n));
+  stepIndicator.textContent = Step ${n+1} of 4;
+}
+
+function validateStep(stepIndex){
+  let valid = true;
+  document.querySelectorAll(".error").forEach(e=>e.style.display="none");
+
+  if(stepIndex===0){
+    const name=document.getElementById("fullname").value.trim();
+    if(name.length<2){document.getElementById("error-fullname").style.display="block"; valid=false;}
+  }
+  if(stepIndex===1){
+    const email=document.getElementById("email").value.trim();
+    const regex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!regex.test(email)){document.getElementById("error-email").style.display="block"; valid=false;}
+  }
+  if(stepIndex===2){
+    const mobile=document.getElementById("mobile").value.trim();
+    if(!/^09\d{9}$/.test(mobile)){document.getElementById("error-mobile").style.display="block"; valid=false;}
+  }
+  if(stepIndex===3){
+    const password=document.getElementById("password").value;
+    const confirm=document.getElementById("confirm").value;
+    const strong=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    if(!strong.test(password)){document.getElementById("error-password").style.display="block"; valid=false;}
+    if(password!==confirm){document.getElementById("error-confirm").style.display="block"; valid=false;}
+  }
+  return valid;
+}
+
+function togglePassword(id){
+  const field=document.getElementById(id);
+  field.type=field.type==="password"?"text":"password";
+}
+
+document.querySelectorAll("[data-action='next']").forEach(btn=>btn.addEventListener("click", ()=>{
+  if(validateStep(currentStep) && currentStep<steps.length-1){currentStep++; showStep(currentStep);}
+}));
+document.querySelectorAll("[data-action='prev']").forEach(btn=>btn.addEventListener("click", ()=>{
+  if(currentStep>0){currentStep--; showStep(currentStep);}
+}));
+
+document.getElementById("signupForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  if(validateStep(currentStep)){
+    alert("✅ Account successfully created! Welcome to Ichiraku Ramen 🍜");
+    this.reset();
+    currentStep=0;
+    showStep(currentStep);
+  }
+});
+
+showStep(currentStep);
+</script>
+</body>
+</html>
